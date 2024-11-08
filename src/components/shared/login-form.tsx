@@ -4,6 +4,7 @@ import { authenticate } from '@/lib/actions/user.actions'
 import { useActionState } from 'react'
 import { ArrowRightIcon, AtSign, CircleAlert, LockKeyhole } from 'lucide-react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 export default function LoginForm() {
 	const [errorMessage, formAction, isPending] = useActionState(
@@ -14,9 +15,7 @@ export default function LoginForm() {
 	return (
 		<form action={formAction}>
 			<div className='flex-1 rounded-lg  px-6 pb-4 pt-8'>
-				<h1 className={`mb-3 text-2xl`}>
-					Please log in to continue.
-				</h1>
+				<h1 className={`mb-3 text-2xl`}>Please log in to continue.</h1>
 				<div className='w-full'>
 					<div>
 						<label
@@ -39,7 +38,7 @@ export default function LoginForm() {
 					</div>
 					<div className='mt-4'>
 						<label
-							className='mb-3 mt-5 block text-xs font-medium  '
+							className='mb-3 mt-5 block text-xs font-medium'
 							htmlFor='password'
 						>
 							Password
@@ -59,9 +58,11 @@ export default function LoginForm() {
 					</div>
 				</div>
 				<div className='mt-4'>
-					<Button type='submit' aria-disabled={isPending} className='group'>
-						Log in <ArrowRightIcon className='ml-auto h-5 w-5 group-hover:translate-x-1 transition-transform duration-300' />
-					</Button>
+					<Link href={'/dashboard'} className='group'>
+						<Button type='submit' aria-disabled={isPending}>
+							Log in <ArrowRightIcon className='ml-auto h-5 w-5 group-hover:translate-x-1 transition-transform duration-300' />
+						</Button>
+					</Link>
 				</div>
 
 				<div
